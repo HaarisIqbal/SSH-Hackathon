@@ -14,7 +14,16 @@ public class watkCommand : Command
     /// Hover over the method's name to check its documentation.
     public override bool CheckSyntax(string command)
     {
-        if (command.Contains("watk")) 
+        string[] commandArray = command.Split(' ');
+
+        // Guard clause. Return false if 1 or less inputs.
+        if (commandArray.Length <= 1)
+        {
+            return false;
+        }
+
+        // Check if first word is valid.
+        if (commandArray.GetValue(0) == "watk") 
         {
             return true;
         }
