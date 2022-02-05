@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class ListCommand : Command
 {
-    public ListCommand(string name, string syntax)
+    public ListCommand()
     {
-        this.Name = name;
-        this.Syntax = syntax;
+        this.Name = "LIST";
+        this.Syntax = "list";
         this.Description = "Lists all the active processes.";
     }
 

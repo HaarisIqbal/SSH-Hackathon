@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class HelpCommand : Command
 {
-    public HelpCommand(string name, string syntax)
+    public HelpCommand()
     {
-        this.Name = name;
-        this.Syntax = syntax;
-        this.Description = "Lists all commands that you can use.";
+        this.Name = "HELP";
+        this.Syntax = "help / help [command]";
+        this.Description = "Lists all commands that you can use or shows you detailed syntax of a certain command.";
     }
 
     /// <summary>
