@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class Fish : Command
 {
-      public fishCommand()
+    public Fish()
     {
         this.Name = "FISH";
-        this.Number = 20; 
+        this.Syntax = "fish [number]";
         this.Description = "Fishing attack!\n";
     }
 
- public override bool CheckSyntax(string command)
+    public override bool CheckSyntax(string command)
     {
         string[] commandArray = command.Split(' ');
           
@@ -19,7 +19,7 @@ public class Fish : Command
          if (commandArray[0] == "fish") 
         {
             int x = 0; 
-            bool result = int.TryPorse(commandArray[1], out x);
+            bool result = int.TryParse(commandArray[1], out x);
             if (result)
             {
                 return true;
