@@ -40,4 +40,12 @@ public class FileSystem : MonoBehaviour
         }
         else return false;
     }
+
+    /// <summary>
+    /// Returns all the current files.
+    /// </summary>
+    public List<TextFile> GetAllFiles()
+    {
+        return this.CurrentFiles;
+    }
 }
