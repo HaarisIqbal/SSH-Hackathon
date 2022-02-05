@@ -253,6 +253,7 @@ GameObject:
   m_Component:
   - component: {fileID: 298094116}
   - component: {fileID: 298094118}
+  - component: {fileID: 298094117}
   m_Layer: 5
   m_Name: ConsolePanel
   m_TagString: Untagged
@@ -280,6 +281,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 217.96002}
   m_SizeDelta: {x: 0, y: -435.93}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &298094117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 298094115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb10fd55b21dc694b87a9e1ff5ac5ff6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ConsoleText: {fileID: 1174594318}
 --- !u!222 &298094118
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -579,6 +593,7 @@ MonoBehaviour:
   InputF: {fileID: 1462158413}
   Scroll: {fileID: 1883925678}
   ConsoleContent: {fileID: 1174594318}
+  Con: {fileID: 0}
 --- !u!1 &912514681
 GameObject:
   m_ObjectHideFlags: 0
@@ -1529,6 +1544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb5b3eaa02504c55bee7e3a0f1479ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LogText: {fileID: 2023596832}
 --- !u!1 &1770947118
 GameObject:
   m_ObjectHideFlags: 0
