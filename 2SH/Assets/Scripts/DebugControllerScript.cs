@@ -12,12 +12,23 @@ public class DebugControllerScript : MonoBehaviour
 
     private List<string> AcceptedCommands;
     private HelpCommand help;
+    private SeeCommand see;
 
     private void Start()
     {
-        help = new HelpCommand();
+        InitializeCommands();
         AcceptedCommands = new List<string>();
         PopulateList();
+    }
+
+    /// <summary>
+    /// Since each command has its own class, it is important to have those objects initialized
+    /// so that we can use them in the level.
+    /// </summary>
+    private void InitializeCommands()
+    {
+        help = new HelpCommand();
+        see = new SeeCommand();
     }
 
     private void Update()
@@ -46,7 +57,10 @@ public class DebugControllerScript : MonoBehaviour
     /// </summary>
     private string Result(string command)
     {
-        if (command == "help") return help.ExecuteCommand(command);
+        string keyword = command.Split(' ')[0];
+
+        if (keyword == "help") return help.ExecuteCommand(command);
+        if (keyword == "see") return see.ExecuteCommand(command);
 
         return null;
     }
@@ -59,6 +73,7 @@ public class DebugControllerScript : MonoBehaviour
         string keyword = text.Split(' ')[0];
 
         if (keyword == "help") return help.CheckSyntax(text);
+        if (keyword == "see") return see.CheckSyntax(text);
 
         return false;
     }
@@ -68,6 +83,9 @@ public class DebugControllerScript : MonoBehaviour
         AcceptedCommands.Add("help");
         AcceptedCommands.Add("watk");
         AcceptedCommands.Add("dehash");
+        AcceptedCommands.Add("see");
+        AcceptedCommands.Add("showfiles");
+        AcceptedCommands.Sort(); // to show them in alphabetical order
     }
 
     public List<string> GetCommandsList()
