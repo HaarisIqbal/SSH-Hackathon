@@ -15,13 +15,13 @@ public class LogScript : MonoBehaviour
     {   
         List<string> output = new List<string>(); // Output of Log.
 
-        if (valid(command)) 
+        if (command.Equals("!")) 
         {
-            output.add("Valid command!");
+            output.Add("Invalid command!");
         }
         else
         {
-            output.add("Invalid command!");
+            output.Add("Running command: " + command);
         }
 
         // Output to be computed here.
