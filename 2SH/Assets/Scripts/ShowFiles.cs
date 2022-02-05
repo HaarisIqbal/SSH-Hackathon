@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class ShowFiles : Command
 {
-    FileSystem Files;
 
     public ShowFiles()
     {
@@ -23,7 +22,13 @@ public class ShowFiles : Command
         return false;
     }
 
-   
-
+    public override string ExecuteCommand(string command)
+    {
+        List<string> Commands = GameObject.Find("DebugController").GetComponent<DebugControllerScript>().GetCommandsList();
+        string result = "Here are the files you can access:\n";
+        foreach (string temp in Commands)
+            result += "     " + temp + "\n";
+        return result;
+    }
 
 }
