@@ -11,9 +11,11 @@ public class DebugControllerScript : MonoBehaviour
     [SerializeField] private Console Con;
 
     private List<string> AcceptedCommands;
+    private HelpCommand help;
 
     private void Start()
     {
+        help = new HelpCommand();
         AcceptedCommands = new List<string>();
         PopulateList();
     }
@@ -35,13 +37,7 @@ public class DebugControllerScript : MonoBehaviour
     {
         string keyword = text.Split(' ')[0];
 
-        switch(keyword)
-        {
-            case "help":
-                break;
-            case "list":
-                break;
-        }
+        if (keyword == "help") return help.CheckSyntax(text);
 
         return false;
     }
