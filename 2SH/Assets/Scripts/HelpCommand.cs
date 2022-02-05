@@ -18,6 +18,11 @@ public class HelpCommand : Command
     /// <returns></returns>
     public override bool CheckSyntax(string command)
     {
+        if (command.Contains("help")) 
+        {
+            return true;
+        }
+
         return false;
     }
 }
