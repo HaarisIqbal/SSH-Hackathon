@@ -4,14 +4,29 @@ using UnityEngine;
 
 public class LogScript : MonoBehaviour
 {   
-    // Log will accept input and return a String
-    string log() 
-    {
-        string output; // Output of Log.
+    // Valid function will determine if command is valid.
+    // May not use.
+    bool valid(string command) {
+        return true; // Simply returning true for now.
+    }
+
+    // Log will accept input and return a String.
+    void log(string command) 
+    {   
+        List<string> output = new List<string>(); // Output of Log.
+
+        if (valid(command)) 
+        {
+            output.add("Valid command!");
+        }
+        else
+        {
+            output.add("Invalid command!");
+        }
 
         // Output to be computed here.
 
-        return output;
+        //return output;
     }
 
     // Start is called before the first frame update
