@@ -13,7 +13,7 @@ public class DebugControllerScript : MonoBehaviour
     private List<string> AcceptedCommands;
     private HelpCommand help;
     private SeeCommand see;
-    private watkCommand watk;
+    private WatkCommand watk;
     private ShowFiles showfiles;
 
     private void Start()
@@ -31,7 +31,7 @@ public class DebugControllerScript : MonoBehaviour
     {
         help = new HelpCommand();
         see = new SeeCommand();
-        watk = new watkCommand();
+        watk = new WatkCommand();
         showfiles = new ShowFiles();
     }
 

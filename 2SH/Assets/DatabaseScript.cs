@@ -52,8 +52,6 @@ public class DatabaseScript : MonoBehaviour
         for (int i = 0; i < 3; i++)
             username += digits[Random.Range(0, digits.Count)];
 
-        Debug.Log(username);
-
         return username;
     }
 

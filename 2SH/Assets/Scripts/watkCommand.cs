@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class watkCommand : Command
+public class WatkCommand : Command
 {
-    public watkCommand()
+    public WatkCommand()
     {
         this.Name = "WATK";
         this.Syntax = "watk / watk [fileName]";
