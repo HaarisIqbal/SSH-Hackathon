@@ -48,4 +48,12 @@ public class FileSystem : MonoBehaviour
     {
         return this.CurrentFiles;
     }
+
+    public TextFile GetSpecificFile(string fileName)
+    {
+        foreach (TextFile file in CurrentFiles)
+            if (file.IsTheSameWith(fileName))
+                return file;
+        return new TextFile();
+    }
 }
