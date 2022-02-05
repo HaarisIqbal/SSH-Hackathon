@@ -13,6 +13,7 @@ public class DebugControllerScript : MonoBehaviour
     private List<string> AcceptedCommands;
     private HelpCommand help;
     private SeeCommand see;
+    private watkCommand watk;
 
     private void Start()
     {
@@ -29,6 +30,7 @@ public class DebugControllerScript : MonoBehaviour
     {
         help = new HelpCommand();
         see = new SeeCommand();
+        watk = new watkCommand();
     }
 
     private void Update()
@@ -61,6 +63,7 @@ public class DebugControllerScript : MonoBehaviour
 
         if (keyword == "help") return help.ExecuteCommand(command);
         if (keyword == "see") return see.ExecuteCommand(command);
+        if (keyword == "watk") return watk.ExecuteCommand(command);
 
         return null;
     }
@@ -74,6 +77,7 @@ public class DebugControllerScript : MonoBehaviour
 
         if (keyword == "help") return help.CheckSyntax(text);
         if (keyword == "see") return see.CheckSyntax(text);
+        if (keyword == "watk") return watk.CheckSyntax(text);
 
         return false;
     }
