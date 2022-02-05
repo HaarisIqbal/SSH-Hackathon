@@ -10,6 +10,12 @@ public class TextFile
     private string Name;
     private string Content;
 
+    public TextFile()
+    {
+        this.Name = "";
+        this.Content = "";
+    }
+
     public TextFile(string name, string content)
     {
         this.Name = name;
@@ -22,11 +28,28 @@ public class TextFile
     /// <summary>
     /// Checks if the said filename is the same with the current filename.
     /// No need to check the content.
+    /// It compares objects.
     /// </summary>
-    /// <param name="withName"></param>
-    /// <returns></returns>
     public bool IsTheSameWith(TextFile file)
     {
         return (this.Name == file.GetName());
+    }
+
+    /// <summary>
+    /// Checks if the said filename is the same with the current filename.
+    /// No need to check the content.
+    /// It compares an object with a string.
+    /// </summary>
+    public bool IsTheSameWith(string fileName)
+    {
+        return (this.Name == fileName);
+    }
+
+    /// <summary>
+    /// Checks if the said file is null or not.
+    /// </summary>
+    public bool IsNull()
+    {
+        return this.Name == null;
     }
 }
