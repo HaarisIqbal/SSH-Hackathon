@@ -15,24 +15,30 @@ public class LogScript : MonoBehaviour
     {   
         List<string> output = new List<string>(); // Output of Log.
 
-        if (valid(command)) 
+        if (command.Equals("!")) 
         {
-            output.add("Valid command!");
+            output.Add("Invalid command!");
         }
         else
         {
-            output.add("Invalid command!");
+            output.Add("Running command: " + command);
         }
 
         // Output to be computed here.
+
+        // Debug
+        for (int i = 0; i < output.Count; i++) {
+            Debug.Log(output[i]);
+        }
 
         //return output;
     }
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {   
+        log("!");
+        log("help");
     }
 
     // Update is called once per frame
