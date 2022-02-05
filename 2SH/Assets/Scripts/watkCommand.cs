@@ -23,21 +23,24 @@ public class watkCommand : Command
         }
 
         // Check if first word is valid.
-        if ((string) commandArray.GetValue(0) == "watk") 
-        {
-            return true;
-        }
+        if (commandArray[0] == "watk") return true;
 
         return false;
     }
 
     public override string ExecuteCommand(string command)
     {
-        List<string> Commands = GameObject.Find("DebugController").GetComponent<DebugControllerScript>().GetCommandsList();
-        string result = "Here are the results from the attack:\n";
-        foreach (string com in Commands)
-            result += "     " + com + "\n";
+        string fileName = command.Split(' ')[1];
+        FileSystem fileSystem = GameObject.Find("FileSystem").GetComponent<FileSystem>();
 
-        return result;
+        bool exists = fileSystem.DoesFileExist(fileName);
+        if (exists)
+        {
+            return "File already exists.";
+        }
+
+        string data = GameObject.Find("Database").GetComponent<DatabaseScript>().GetData();
+        fileSystem.AddNewFile(fileName, data);
+        return "Command successful.";
     }
 }
