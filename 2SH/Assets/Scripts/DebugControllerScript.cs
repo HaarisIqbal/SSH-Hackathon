@@ -35,7 +35,7 @@ public class DebugControllerScript : MonoBehaviour
         showfiles = new ShowFiles();
     }
 
-    private void Update()
+    public void DetectInput()
     {
         if (Input.GetKeyDown(KeyCode.Return))
         {
@@ -53,7 +53,6 @@ public class DebugControllerScript : MonoBehaviour
             }
         }
     }
-
 
     /// <summary>
     /// Returns the content and the results of the command that the method will detect.

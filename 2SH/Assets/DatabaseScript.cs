@@ -76,6 +76,26 @@ public class DatabaseScript : MonoBehaviour
         return password;
     }
 
+    public bool CheckValidUsername(string username)
+    {
+        bool found = false;
+        foreach (string s in usernames)
+            if (s == username)
+                found = true;
+
+        return found;
+    }
+
+    public bool CheckValidPassword(string password, string username)
+    {
+        int positionUsername = -1;
+        for (int i = 0; i < usernames.Count && positionUsername == -1; i++)
+            if (usernames[i] == username)
+                positionUsername = i;
+
+        return password == passwords[positionUsername];
+    }
+
     public string GetData()
     {
         string result = "";
