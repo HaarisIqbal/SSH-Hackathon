@@ -26,6 +26,9 @@ public class LogScript : MonoBehaviour
 
         // Output to be computed here.
 
+        // Debug
+        Debug.Log("Hi");
+
         //return output;
     }
 
