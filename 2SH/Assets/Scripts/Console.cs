@@ -5,11 +5,16 @@ using UnityEngine.UI;
 
 public class Console : MonoBehaviour
 {
-    private List<string> AcceptedCommands = new List<string>();
+    private List<string> AcceptedCommands;
     private string TypedCommands;
     private Text Username_field;
 
-    public bool CheckCommand(string Typed)
+    private void Start()
+    {
+        PopulateList();
+    }
+
+    private bool CheckCommand(string Typed)
     {
         foreach (string command in AcceptedCommands)
         {
@@ -22,7 +27,16 @@ public class Console : MonoBehaviour
         return false;
     }
 
-    public string ReturnInput()
+    private void PopulateList()
+    {
+        AcceptedCommands.Add("help");
+        AcceptedCommands.Add("list");
+        AcceptedCommands.Add("watk");
+        AcceptedCommands.Add("dehash");
+
+    }
+
+    private string ReturnInput()
     {
         return Username_field.text.ToString();
     }
