@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Console : MonoBehaviour
 {
     private List<string> AcceptedCommands = new List<string>();
     private string TypedCommands;
+    private Text Username_field;
 
     public bool CheckCommand(string Typed)
     {
@@ -19,6 +21,14 @@ public class Console : MonoBehaviour
 
         return false;
     }
+
+    public string ReturnInput()
+    {
+        return Username_field.text.ToString();
+    }
+
+
+
 
    
 
