@@ -14,17 +14,17 @@ public class Console : MonoBehaviour
         PopulateList();
     }
 
-    private bool CheckCommand(string Typed)
+    private string CheckCommand(string Typed)
     {
         foreach (string command in AcceptedCommands)
         {
             if (Typed.Equals(command))
             {
-                return true;
+                return command;
             }
         }
 
-        return false;
+        return "!";
     }
 
     private void PopulateList()
@@ -33,13 +33,17 @@ public class Console : MonoBehaviour
         AcceptedCommands.Add("list");
         AcceptedCommands.Add("watk");
         AcceptedCommands.Add("dehash");
+        AcceptedCommands.Add("focus");
 
     }
+
 
     private string ReturnInput()
     {
         return Username_field.text.ToString();
     }
+
+    
 
 
 
