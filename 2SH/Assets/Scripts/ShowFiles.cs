@@ -9,12 +9,11 @@ public class ShowFiles : Command
     /// </summary>
     List<TextFile> AllFiles;
 
-
     public ShowFiles()
     {
         this.Name = "SHOWFILES";
         this.Syntax = "showfiles";
-        this.Description = "Lists all files that you can use";
+        this.Description = "Lists all files in the system.";
     }
 
     /// <summary>
@@ -24,7 +23,7 @@ public class ShowFiles : Command
     /// <returns></returns>
     public override bool CheckSyntax(string command)
     {
-        if (command.Contains("showfiles"))
+        if (command == "showfiles")
         {
             return true;
         }
@@ -39,10 +38,8 @@ public class ShowFiles : Command
     /// <returns></returns>
     public override string ExecuteCommand(string command)
     {
-        List<string> Commands = GameObject.Find("DebugController").GetComponent<DebugControllerScript>().GetCommandsList();
         AllFiles = new List<TextFile>();
         string result = "Here are the files you can access:\n";
-
         AllFiles = GameObject.Find("FileSystem").GetComponent<FileSystem>().GetAllFiles();
        
         foreach (TextFile temp in AllFiles)

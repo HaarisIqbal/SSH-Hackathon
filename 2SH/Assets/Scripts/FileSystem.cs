@@ -29,14 +29,9 @@ public class FileSystem : MonoBehaviour
     /// Tries to add a new file. If it did add it, it will return true.
     /// Otherwise, it will return false.
     /// </summary>
-    public bool AddNewFile(string fileName, string fileContent)
+    public void AddNewFile(string fileName, string fileContent)
     {
-        if (DoesFileExist(fileName))
-        {
-            CurrentFiles.Add(new TextFile(fileName, fileContent));
-            return true;
-        }
-        else return false;
+        CurrentFiles.Add(new TextFile(fileName, fileContent));
     }
 
     /// <summary>

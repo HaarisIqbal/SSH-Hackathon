@@ -13,6 +13,7 @@ public class DatabaseScript : MonoBehaviour
 
     private void Start()
     {
+        numberEntries = 0;
         usernames = new List<string>();
         passwords = new List<string>();
         GenerateData();
@@ -47,9 +48,11 @@ public class DatabaseScript : MonoBehaviour
             digits.Add(c);
 
         for (int i = 0; i < 7; i++)
-            username += letters[Random.Range(0, letters.Count + 1)];
+            username += letters[Random.Range(0, letters.Count)];
         for (int i = 0; i < 3; i++)
-            username += digits[Random.Range(0, digits.Count + 1)];
+            username += digits[Random.Range(0, digits.Count)];
+
+        Debug.Log(username);
 
         return username;
     }
@@ -70,7 +73,7 @@ public class DatabaseScript : MonoBehaviour
         characters.Add('&');
 
         for (int i = 0; i < 10; i++)
-            password += characters[Random.Range(0, characters.Count + 1)];
+            password += characters[Random.Range(1, characters.Count + 1)];
 
         return password;
     }
