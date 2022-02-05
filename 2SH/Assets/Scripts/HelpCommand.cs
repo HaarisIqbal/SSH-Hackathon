@@ -11,11 +11,7 @@ public class HelpCommand : Command
         this.Description = "Lists all commands that you can use or shows you detailed syntax of a certain command.";
     }
 
-    /// <summary>
-    /// Method that checks if the command in the parameter is correct.
-    /// </summary>
-    /// <param name="command"></param>
-    /// <returns></returns>
+    /// Hover over the method's name to check its documentation.
     public override bool CheckSyntax(string command)
     {
         if (command.Contains("help")) 
@@ -24,5 +20,15 @@ public class HelpCommand : Command
         }
 
         return false;
+    }
+
+    public override string ExecuteCommand(string command)
+    {
+        List<string> Commands = GameObject.Find("DebugController").GetComponent<DebugControllerScript>().GetCommandsList();
+        string result = "Here are the commands you can use:\n";
+        foreach (string com in Commands)
+            result += "     " + com + "\n";
+
+        return result;
     }
 }

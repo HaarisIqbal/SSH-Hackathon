@@ -46,6 +46,8 @@ public class DebugControllerScript : MonoBehaviour
     /// </summary>
     private string Result(string command)
     {
+        if (command == "help") return help.ExecuteCommand(command);
+
         return null;
     }
 
@@ -66,5 +68,10 @@ public class DebugControllerScript : MonoBehaviour
         AcceptedCommands.Add("help");
         AcceptedCommands.Add("watk");
         AcceptedCommands.Add("dehash");
+    }
+
+    public List<string> GetCommandsList()
+    {
+        return this.AcceptedCommands;
     }
 }
