@@ -25,7 +25,7 @@ public class TextFile
     /// </summary>
     /// <param name="withName"></param>
     /// <returns></returns>
-    public bool IsTheSame(TextFile file)
+    public bool IsTheSameWith(TextFile file)
     {
         return (this.Name == file.GetName());
     }
