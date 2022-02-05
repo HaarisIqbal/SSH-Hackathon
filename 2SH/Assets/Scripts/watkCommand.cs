@@ -23,7 +23,7 @@ public class watkCommand : Command
         }
 
         // Check if first word is valid.
-        if (commandArray.GetValue(0) == "watk") 
+        if ((string) commandArray.GetValue(0) == "watk") 
         {
             return true;
         }
