@@ -17,12 +17,10 @@ public class FileSystem : MonoBehaviour
     /// <summary>
     /// Checks if a file exists in the current list of files.
     /// </summary>
-    public bool DoesFileExist(string fileName, string fileContent)
+    public bool DoesFileExist(string fileName)
     {
-        TextFile newFile = new TextFile(fileName, fileContent);
-
         foreach (TextFile file in CurrentFiles)
-            if (file.IsTheSameWith(newFile)) return true;
+            if (file.IsTheSameWith(fileName)) return true;
         
         return false;
     }
@@ -33,7 +31,7 @@ public class FileSystem : MonoBehaviour
     /// </summary>
     public bool AddNewFile(string fileName, string fileContent)
     {
-        if (DoesFileExist(fileName, fileContent))
+        if (DoesFileExist(fileName))
         {
             CurrentFiles.Add(new TextFile(fileName, fileContent));
             return true;
