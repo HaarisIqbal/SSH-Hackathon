@@ -27,15 +27,18 @@ public class LogScript : MonoBehaviour
         // Output to be computed here.
 
         // Debug
-        Debug.Log("Hi");
+        for (int i = 0; i < output.Count; i++) {
+            Debug.Log(output[i]);
+        }
 
         //return output;
     }
 
     // Start is called before the first frame update
     void Start()
-    {
-        
+    {   
+        log("!");
+        log("help");
     }
 
     // Update is called once per frame
