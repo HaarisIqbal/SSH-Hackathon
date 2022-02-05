@@ -9,6 +9,6 @@ public class Console : MonoBehaviour
 
     public void Log(string text)
     {
-        ConsoleText.text += text + "\n";
+        ConsoleText.text += text;
     }
 }

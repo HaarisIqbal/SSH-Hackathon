@@ -4,39 +4,16 @@ using UnityEngine;
 
 public class Command
 {
-    private string Name;
-    private string Description;
-    private List<string> Syntax;
+    protected string Name;
+    protected string Description;
+    protected string Syntax;
 
-    public Command(string name, string Description)
+    public void InitCommand(string name, string description, string syntax)
     {
         this.Name = name;
-        this.Description = Description;
+        this.Description = description;
+        this.Syntax = syntax;
     }
 
-
-    public Command(string name, string Description, List<string> Syntax)
-    {
-        this.Name = name;
-        this.Description = Description;
-        this.Syntax = Syntax;
-    }
-
-    public string GetName()
-    {
-        return this.Name;
-    }
-
-    public string GetDescription()
-    {
-        return this.Description;
-    }
-
-    public List<string> GetSyntax()
-    {
-        return this.Syntax;
-    }
-
-
-
+    public virtual bool CheckSyntax(string command) { return false; }
 }
