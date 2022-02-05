@@ -13,6 +13,8 @@ public class DatabaseScript : MonoBehaviour
 
     private void Start()
     {
+        usernames = new List<string>();
+        passwords = new List<string>();
         GenerateData();
     }
 
@@ -71,5 +73,15 @@ public class DatabaseScript : MonoBehaviour
             password += characters[Random.Range(0, characters.Count + 1)];
 
         return password;
+    }
+
+    public string GetData()
+    {
+        string result = "";
+
+        for (int i = 0; i < usernames.Count; i++)
+            result += usernames[i] + "  " + passwords[i] + "\n";
+
+        return result;
     }
 }
