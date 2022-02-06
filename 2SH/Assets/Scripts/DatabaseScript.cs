@@ -71,7 +71,7 @@ public class DatabaseScript : MonoBehaviour
         characters.Add('&');
 
         for (int i = 0; i < 10; i++)
-            password += characters[Random.Range(1, characters.Count + 1)];
+            password += characters[Random.Range(1, characters.Count)];
 
         return password;
     }

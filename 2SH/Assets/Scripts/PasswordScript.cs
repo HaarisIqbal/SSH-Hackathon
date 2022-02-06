@@ -31,7 +31,7 @@ public class PasswordScript : MonoBehaviour
         characters.Add('&');
 
         for (int i = 0; i < 16; i++)
-            pass += characters[Random.Range(1, characters.Count + 1)];
+            pass += characters[Random.Range(1, characters.Count)];
 
         password = pass;
     }
