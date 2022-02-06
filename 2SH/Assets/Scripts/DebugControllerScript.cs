@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class DebugControllerScript : MonoBehaviour
 {
@@ -13,6 +15,7 @@ public class DebugControllerScript : MonoBehaviour
 
     [SerializeField] private UnityEvent OnDatabaseCracked;
     [SerializeField] private UnityEvent OnScanRouter;
+    [SerializeField] private UnityEvent FinalMissionAnimation;
 
     private List<string> AcceptedCommands;
     private HelpCommand help;
@@ -90,6 +93,11 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "decrypt") return decrypt.ExecuteCommand(command);
         if (keyword == "start_router") return startRouter.ExecuteCommand(command);
         if (keyword == "scan_router") return scanRouter.ExecuteCommand(command);
+        if (SceneManager.GetActiveScene().name == "Mission6" && keyword == "delete")
+        {
+            FinalMissionAnimation.Invoke();
+            return "Data wiped. All students are clear of student debt!";
+        }
 
         return null;
     }
@@ -110,6 +118,10 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "decrypt") return decrypt.CheckSyntax(text);
         if (keyword == "scan_router") return scanRouter.CheckSyntax(text);
         if (keyword == "start_router") return startRouter.CheckSyntax(text);
+        if (SceneManager.GetActiveScene().name == "Mission6" && keyword == "delete")
+        {
+            return true;
+        }
 
         return false;
     }
@@ -125,6 +137,10 @@ public class DebugControllerScript : MonoBehaviour
         AcceptedCommands.Add("fish");
         AcceptedCommands.Add("scan_router");
         AcceptedCommands.Add("start_router");
+        if (SceneManager.GetActiveScene().name == "Mission6")
+        {
+            AcceptedCommands.Add("delete");
+        }
         AcceptedCommands.Sort(); // to show them in alphabetical order
     }
 
