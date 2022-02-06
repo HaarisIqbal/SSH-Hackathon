@@ -38,48 +38,52 @@ public class Mission1Script : MonoBehaviour
 
     public void DetectLoginInput()
     {
-        if (Input.GetKeyDown(KeyCode.Return) && !database.IsDatabaseProtected())
+        if (Input.GetKeyDown(KeyCode.Return))
         {
-            string line = LoginPanelInputF.text;
-            if (username == "")
+            if (!database.IsDatabaseProtected())
             {
-                if (CheckCorrectUsername(line))
+                string line = LoginPanelInputF.text;
+                if (username == "")
                 {
-                    username = line;
-                    LoginPanelConsole.text += "\nPASSWORD:";
-                }
-                else
-                {
-                    username = "";
-                    LoginPanelConsole.text = "USERNAME:";
-                }
-            }
-            else
-            {
-                if (CheckCorrectPassword(line))
-                {
-                    LoginPanelConsole.text += "\nLOGIN SUCCESSFUL.";
-                    if (!startedAnimation)
+                    if (CheckCorrectUsername(line))
                     {
-                        startedAnimation = true;
-                        StartCoroutine(AnimateOutro());
+                        username = line;
+                        LoginPanelConsole.text += "\nPASSWORD:";
+                    }
+                    else
+                    {
+                        username = "";
+                        LoginPanelConsole.text = "USERNAME:";
                     }
                 }
                 else
                 {
-                    username = "";
-                    LoginPanelConsole.text = "USERNAME:";
+                    if (CheckCorrectPassword(line))
+                    {
+                        LoginPanelConsole.text += "\nLOGIN SUCCESSFUL.";
+                        if (!startedAnimation)
+                        {
+                            startedAnimation = true;
+                            StartCoroutine(AnimateOutro());
+                        }
+                    }
+                    else
+                    {
+                        username = "";
+                        LoginPanelConsole.text = "USERNAME:";
+                    }
                 }
             }
+            else LoginPanelConsole.text += "DATABASE PROTECTED.";
         }
-        else LoginPanelConsole.text += "DATABASE PROTECTED.";
 
         LoginPanelInputF.text = "";
     }
 
     public void ProtectionOff()
     {
-        LoginPanelInputF.text = "DATABASE PROTECTION CRACKED.\nUSERNAME:";
+        LoginPanelConsole.text = "DATABASE PROTECTION CRACKED.\nUSERNAME:";
+        database.ProtectionOff();
     }
 
     private IEnumerator AnimateOutro()

@@ -98,6 +98,8 @@ public class DatabaseScript : MonoBehaviour
 
     public bool IsDatabaseProtected() { return IsProtected; }
 
+    public void ProtectionOff() { IsProtected = false; }
+
     public string GetData()
     {
         string result = "";
