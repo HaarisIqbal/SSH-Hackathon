@@ -15,6 +15,7 @@ public class DebugControllerScript : MonoBehaviour
     private SeeCommand see;
     private WatkCommand watk;
     private ShowFiles showfiles;
+    private CapCommand cap;
 
     private void Start()
     {
@@ -33,6 +34,8 @@ public class DebugControllerScript : MonoBehaviour
         see = new SeeCommand();
         watk = new WatkCommand();
         showfiles = new ShowFiles();
+        cap = new CapCommand();
+       
     }
 
     public void DetectInput()
@@ -66,6 +69,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "see") return see.ExecuteCommand(command);
         if (keyword == "watk") return watk.ExecuteCommand(command);
         if (keyword == "showfiles") return showfiles.ExecuteCommand(command);
+        if (keyword == "cap") return cap.ExecuteCommand(command);
 
         return null;
     }
@@ -81,6 +85,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "see") return see.CheckSyntax(text);
         if (keyword == "watk") return watk.CheckSyntax(text);
         if (keyword == "showfiles") return showfiles.CheckSyntax(text);
+        if (keyword == "cap") return showfiles.CheckSyntax(text);
 
         return false;
     }
@@ -92,6 +97,8 @@ public class DebugControllerScript : MonoBehaviour
         AcceptedCommands.Add("dehash");
         AcceptedCommands.Add("see");
         AcceptedCommands.Add("showfiles");
+        AcceptedCommands.Add("cap");
+
         AcceptedCommands.Sort(); // to show them in alphabetical order
     }
 
