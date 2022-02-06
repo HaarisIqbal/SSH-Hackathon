@@ -24,7 +24,7 @@ public class DatabaseScript : MonoBehaviour
     /// </summary>
     private void GenerateData()
     {
-        numberEntries = Random.Range(0, 100);
+        numberEntries = Random.Range(3, 10);
 
         for (int i = 0; i < numberEntries; i++)
         {
