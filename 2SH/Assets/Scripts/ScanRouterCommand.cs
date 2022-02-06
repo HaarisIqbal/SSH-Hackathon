@@ -6,14 +6,15 @@ public class ScanRouterCommand : Command
 { 
     public ScanRouterCommand()
     {
-        this.Name = "SCAN";
-        this.Syntax = "scan";
-        this.Description = "Scans the router for possbile connections";
+        this.Name = "SCAN_ROUTER";
+        this.Syntax = "scan_router";
+        this.Description = "Scans the router for possbile connections.";
     }
 
     public override bool CheckSyntax(string command)
     {
-        return command.Contains("scan");
+        string[] args = command.Split(' ');
+        return args[0] == "scan_router" && args.Length == 2;
     }
 
     public override string ExecuteCommand(string command)
