@@ -18,7 +18,7 @@ public class ScanCommand : Command
 
     public override string ExecuteCommand(string command)
     {
-        RouterData routerData = GameObject.Find("RouterData").GetComponent<RouterDataScrip>.RetrieveData();
+        //RouterData routerData = GameObject.Find("RouterData").GetComponent<RouterDataScrip>.RetrieveData();
 
         return "Data Scanned!";
 
