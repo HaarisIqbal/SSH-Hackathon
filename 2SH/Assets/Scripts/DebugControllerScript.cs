@@ -58,7 +58,7 @@ public class DebugControllerScript : MonoBehaviour
 
     public void AddToConsole(string text)
     {
-        Con.Log("\n     " + text);
+        Con.Log("\n   > " + text);
     }
 
     /// <summary>
