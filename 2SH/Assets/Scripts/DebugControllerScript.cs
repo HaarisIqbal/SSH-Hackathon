@@ -20,6 +20,7 @@ public class DebugControllerScript : MonoBehaviour
     private ShowFiles showfiles;
     private CapCommand cap;
     private FishCommand fish;
+    private DecryptCommand decrypt;
 
     private void Start()
     {
@@ -40,6 +41,7 @@ public class DebugControllerScript : MonoBehaviour
         showfiles = new ShowFiles();
         cap = new CapCommand();
         fish = new FishCommand();
+        decrypt = new DecryptCommand();
     }
 
     public void DetectInput()
@@ -80,6 +82,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "showfiles") return showfiles.ExecuteCommand(command);
         if (keyword == "fish") return fish.ExecuteCommand(command);
         if (keyword == "cap") return cap.ExecuteCommand(command);
+        if (keyword == "decrypt") return decrypt.ExecuteCommand(command);
 
         return null;
     }
@@ -97,6 +100,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "showfiles") return showfiles.CheckSyntax(text);
         if (keyword == "cap") return cap.CheckSyntax(text);
         if (keyword == "fish") return fish.CheckSyntax(text);
+        if (keyword == "decrypt") return decrypt.CheckSyntax(text);
 
         return false;
     }
@@ -105,7 +109,7 @@ public class DebugControllerScript : MonoBehaviour
     {
         AcceptedCommands.Add("help");
         AcceptedCommands.Add("watk");
-        AcceptedCommands.Add("dehash");
+        AcceptedCommands.Add("decrypt");
         AcceptedCommands.Add("see");
         AcceptedCommands.Add("showfiles");
         AcceptedCommands.Add("cap");
