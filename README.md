@@ -2,5 +2,5 @@
 
 Repo for Team SSH, competing in Royal Hackaway v5
 
-Members = Stefan, Sorin, Haaris
+Members = Stefan, Sorin, Haaris, LILIA 
 
