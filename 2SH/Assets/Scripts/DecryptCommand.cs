@@ -20,7 +20,7 @@ public class DecryptCommand : Command
     public override string ExecuteCommand(string command)
     {
         string fileNameToFind = command.Split(' ')[1];
-        ///PasswordScript passwordScript = GameObject.Find("Password").GetComponent<PasswordScript>().KnowsPassword();
+        GameObject.Find("Password").GetComponent<PasswordScript>().KnowsPassword(fileNameToFind);
         return "Hash successfully decrypted.";
     }
 }

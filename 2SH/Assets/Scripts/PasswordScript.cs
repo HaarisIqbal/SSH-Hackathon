@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class PasswordScript : MonoBehaviour
 {
-    /**
-     * Generate a password that will ONLY BE ACCESSIBLE once the handshake is captured and the decryption is successful.
-     * 
-     * private void GeneratePassword();
-     * public void HashDecrypted(); --> that means I will be able to get the password through the decrypt command (work with only a bool)
-     * 
-     * 
-     * **/
-
     private string password;
+    private bool knows = false;
+    private FileSystem fileSystem;
+
+    private void Start()
+    {
+        fileSystem = GameObject.Find("FileSystem").GetComponent<FileSystem>();
+        GeneratePassword();
+        knows = false;
+    }
 
     private void GeneratePassword()
     {
@@ -36,8 +36,17 @@ public class PasswordScript : MonoBehaviour
         password = pass;
     }
 
-    public void HashDecrypted()
+    /// <summary>
+    /// Marks that the user decrypted the hash and immediately modifies the file.
+    /// </summary>
+    /// <param name="fileName"></param>
+    public void KnowsPassword(string fileName)
     {
-
+        fileSystem.AddContent(fileName, "Decrypted password: " + password);
+        knows = true;
     }
+
+    public bool PasswordKnown() { return knows; }
+
+    public string GetPassword() { return password; }
 }

@@ -22,6 +22,11 @@ public class TextFile
         this.Content = content;
     }
 
+    public void AddContent(string newContent)
+    {
+        this.Content += "\n" + newContent;
+    }
+
     public string GetName() { return this.Name; }
     public string GetContent() { return this.Content; }
 

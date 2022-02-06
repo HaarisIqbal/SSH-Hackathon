@@ -25,6 +25,13 @@ public class FileSystem : MonoBehaviour
         return false;
     }
 
+    public void AddContent(string fileName, string newContent)
+    {
+        foreach (TextFile file in CurrentFiles)
+            if (file.IsTheSameWith(fileName))
+                file.AddContent(newContent);
+    }
+
     /// <summary>
     /// Tries to add a new file. If it did add it, it will return true.
     /// Otherwise, it will return false.
