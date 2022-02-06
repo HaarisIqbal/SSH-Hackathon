@@ -13,15 +13,12 @@ public class ScanRouterCommand : Command
 
     public override bool CheckSyntax(string command)
     {
-        string[] args = command.Split(' ');
-        return args[0] == "scan_router" && args.Length == 2;
+        return command == "scan_router";
     }
 
     public override string ExecuteCommand(string command)
     {
-        //RouterData routerData = GameObject.Find("RouterData").GetComponent<RouterDataScrip>.RetrieveData();
-
-        return "Data Scanned!";
-
+        GameObject.Find("DebugController").GetComponent<DebugControllerScript>().RouterScanned();
+        return GameObject.Find("RouterData").GetComponent<RouterDataScript>().RetrieveData();
     }
 }
