@@ -13,9 +13,31 @@ public class PasswordScript : MonoBehaviour
      * 
      * **/
 
+    private string password;
 
-    void Start()
+    private void GeneratePassword()
     {
-        
+        string pass = "";
+
+        List<char> characters = new List<char>();
+        for (char c = '0'; c <= '9'; c++)
+            characters.Add(c);
+        for (char c = 'a'; c <= 'z'; c++)
+            characters.Add(c);
+        characters.Add('!');
+        characters.Add('?');
+        characters.Add('#');
+        characters.Add('@');
+        characters.Add('&');
+
+        for (int i = 0; i < 16; i++)
+            pass += characters[Random.Range(1, characters.Count + 1)];
+
+        password = pass;
+    }
+
+    public void HashDecrypted()
+    {
+
     }
 }
