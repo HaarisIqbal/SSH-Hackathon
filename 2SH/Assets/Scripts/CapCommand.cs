@@ -13,7 +13,8 @@ public class CapCommand : Command
 
     public override bool CheckSyntax(string command)
     {
-        return command.Contains("cap");
+        string[] args = command.Split(' ');
+        return command.Contains("cap") && args.Length == 2;
     }
 
     public override string ExecuteCommand(string command)
