@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-[System.Serializable]
 public class Mission1Script : MonoBehaviour
 {
     [SerializeField] private Text LoginPanelConsole;
