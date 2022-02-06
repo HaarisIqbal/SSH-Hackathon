@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50bc0275ee91f8f439225bac1f761ee0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  IsProtected: 0
+  IsProtected: 1
 --- !u!4 &44892987
 Transform:
   m_ObjectHideFlags: 0
@@ -683,7 +683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0003077035}
+  m_AnchoredPosition: {x: 0, y: 0.000016212463}
   m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &741817093
@@ -781,7 +781,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1303111296}
-        m_TargetAssemblyTypeName: Mission3Script, Assembly-CSharp
+        m_TargetAssemblyTypeName: Mission6Script, Assembly-CSharp
         m_MethodName: DetectLoginInput
         m_Mode: 1
         m_Arguments:
@@ -969,7 +969,37 @@ MonoBehaviour:
   Con: {fileID: 298094117}
   OnDatabaseCracked:
     m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1303111296}
+        m_TargetAssemblyTypeName: Mission6Script, Assembly-CSharp
+        m_MethodName: ProtectionOff
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnScanRouter:
+    m_PersistentCalls:
       m_Calls: []
+  FinalMissionAnimation:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1303111296}
+        m_TargetAssemblyTypeName: Mission6Script, Assembly-CSharp
+        m_MethodName: StartAnimatingOutro
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &900013022
 GameObject:
   m_ObjectHideFlags: 0
@@ -1381,7 +1411,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1303111294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ae079819d71134199f070fc0f46499, type: 3}
+  m_Script: {fileID: 11500000, guid: 9c616815181db644c8449a47d42dd2e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   LoginPanelConsole: {fileID: 1857309898}
@@ -1524,7 +1554,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 211816903}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.997762
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

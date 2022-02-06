@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
+using UnityEditor.SceneManagement;
+using UnityEngine.SceneManagement;
 
 public class DebugControllerScript : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class DebugControllerScript : MonoBehaviour
     [SerializeField] private Console Con;
 
     [SerializeField] private UnityEvent OnDatabaseCracked;
+    [SerializeField] private UnityEvent OnScanRouter;
+    [SerializeField] private UnityEvent FinalMissionAnimation;
 
     private List<string> AcceptedCommands;
     private HelpCommand help;
@@ -20,6 +24,9 @@ public class DebugControllerScript : MonoBehaviour
     private ShowFiles showfiles;
     private CapCommand cap;
     private FishCommand fish;
+    private DecryptCommand decrypt;
+    private StartRouterCommand startRouter;
+    private ScanRouterCommand scanRouter;
 
     private void Start()
     {
@@ -40,6 +47,9 @@ public class DebugControllerScript : MonoBehaviour
         showfiles = new ShowFiles();
         cap = new CapCommand();
         fish = new FishCommand();
+        decrypt = new DecryptCommand();
+        startRouter = new StartRouterCommand();
+        scanRouter = new ScanRouterCommand();
     }
 
     public void DetectInput()
@@ -80,6 +90,14 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "showfiles") return showfiles.ExecuteCommand(command);
         if (keyword == "fish") return fish.ExecuteCommand(command);
         if (keyword == "cap") return cap.ExecuteCommand(command);
+        if (keyword == "decrypt") return decrypt.ExecuteCommand(command);
+        if (keyword == "start_router") return startRouter.ExecuteCommand(command);
+        if (keyword == "scan_router") return scanRouter.ExecuteCommand(command);
+        if (SceneManager.GetActiveScene().name == "Mission6" && keyword == "delete")
+        {
+            FinalMissionAnimation.Invoke();
+            return "Data wiped. All students are clear of student debt!";
+        }
 
         return null;
     }
@@ -97,6 +115,13 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "showfiles") return showfiles.CheckSyntax(text);
         if (keyword == "cap") return cap.CheckSyntax(text);
         if (keyword == "fish") return fish.CheckSyntax(text);
+        if (keyword == "decrypt") return decrypt.CheckSyntax(text);
+        if (keyword == "scan_router") return scanRouter.CheckSyntax(text);
+        if (keyword == "start_router") return startRouter.CheckSyntax(text);
+        if (SceneManager.GetActiveScene().name == "Mission6" && keyword == "delete")
+        {
+            return true;
+        }
 
         return false;
     }
@@ -105,11 +130,17 @@ public class DebugControllerScript : MonoBehaviour
     {
         AcceptedCommands.Add("help");
         AcceptedCommands.Add("watk");
-        AcceptedCommands.Add("dehash");
+        AcceptedCommands.Add("decrypt");
         AcceptedCommands.Add("see");
         AcceptedCommands.Add("showfiles");
         AcceptedCommands.Add("cap");
         AcceptedCommands.Add("fish");
+        AcceptedCommands.Add("scan_router");
+        AcceptedCommands.Add("start_router");
+        if (SceneManager.GetActiveScene().name == "Mission6")
+        {
+            AcceptedCommands.Add("delete");
+        }
         AcceptedCommands.Sort(); // to show them in alphabetical order
     }
 
@@ -131,6 +162,11 @@ public class DebugControllerScript : MonoBehaviour
             OnDatabaseCracked.Invoke();
         }
         else AddToConsole("Phishing attack unsuccessful. Please try again.");
+    }
+
+    public void RouterScanned()
+    {
+        OnScanRouter.Invoke();
     }
 
     public List<string> GetCommandsList()
