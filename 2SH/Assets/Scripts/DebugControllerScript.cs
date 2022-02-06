@@ -95,7 +95,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "see") return see.CheckSyntax(text);
         if (keyword == "watk") return watk.CheckSyntax(text);
         if (keyword == "showfiles") return showfiles.CheckSyntax(text);
-        if (keyword == "cap") return showfiles.CheckSyntax(text);
+        if (keyword == "cap") return cap.CheckSyntax(text);
         if (keyword == "fish") return fish.CheckSyntax(text);
 
         return false;

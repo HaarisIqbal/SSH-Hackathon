@@ -8,35 +8,26 @@ public class CapCommand : Command
     {
         this.Name = "CAPTURE";
         this.Syntax = "cap [filename]";
-        this.Description = "Capture a file";
+        this.Description = "Captures a handshake of a WiFi router.";
     }
 
     public override bool CheckSyntax(string command)
     {
-        if (command.Contains("cap"))
-        {
-            return true;
-        }
-        
-        return false;
+        return command.Contains("cap");
     }
 
     public override string ExecuteCommand(string command)
     {
         string fileNameToFind = command.Split(' ')[1];
-        string result = "";
-        TextFile file = GameObject.Find("FileSystem").GetComponent<FileSystem>().GetSpecificFile(fileNameToFind);
+        FileSystem fileSystem = GameObject.Find("FileSystem").GetComponent<FileSystem>();
 
-        if (file.IsNull())
-        {
-            TextFile content = new TextFile("WPAhs", "temp");
-        }
-        else result = "File already exists";
 
-        return result;
+        if (fileSystem.DoesFileExist(fileNameToFind)) return "File already exists.";
+        fileSystem.AddNewFile(fileNameToFind, GenerateHashCode());
+        return "Handshake successfully captured.";
     }
 
-    public string GenerateHashCode()
+    private string GenerateHashCode()
     {
         string numbers = "1,2,3,4,5,6,7,8,9";
         string alphabet = " A B C D E F G H I J K L M N O P Q R S T U V W X Y Z ";
