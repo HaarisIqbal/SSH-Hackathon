@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScanCommand : Command
+public class ScanRouterCommand : Command
 { 
-    public ScanCommand()
+    public ScanRouterCommand()
     {
         this.Name = "SCAN";
         this.Syntax = "scan";
