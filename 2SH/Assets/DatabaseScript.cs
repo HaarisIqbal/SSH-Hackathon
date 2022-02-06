@@ -96,6 +96,10 @@ public class DatabaseScript : MonoBehaviour
         return password == passwords[positionUsername];
     }
 
+    public bool IsDatabaseProtected() { return IsProtected; }
+
+    public void ProtectionOff() { IsProtected = false; }
+
     public string GetData()
     {
         string result = "";

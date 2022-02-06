@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Mission0Script : MonoBehaviour
@@ -8,8 +9,12 @@ public class Mission0Script : MonoBehaviour
     [SerializeField] private Text LoginPanelConsole;
     [SerializeField] private InputField LoginPanelInputF;
 
+    [SerializeField] private Animator OutroAnimator;
+    [SerializeField] private AnimationClip OutroAnimation;
+
     private DatabaseScript database;
     private string username;
+    private bool startedAnimation = false;
 
     private void Start()
     {
@@ -50,6 +55,11 @@ public class Mission0Script : MonoBehaviour
                 if (CheckCorrectPassword(line))
                 {
                     LoginPanelConsole.text += "\nLOGIN SUCCESSFUL.";
+                    if (!startedAnimation)
+                    {
+                        startedAnimation = true;
+                        StartCoroutine(AnimateOutro());
+                    }
                 }
                 else
                 {
@@ -60,5 +70,12 @@ public class Mission0Script : MonoBehaviour
 
             LoginPanelInputF.text = "";
         }
+    }
+
+    private IEnumerator AnimateOutro()
+    {
+        OutroAnimator.enabled = true;
+        yield return new WaitForSeconds(OutroAnimation.length);
+        SceneManager.LoadScene(1);
     }
 }

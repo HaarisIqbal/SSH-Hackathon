@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DebugControllerScript : MonoBehaviour
@@ -10,11 +11,14 @@ public class DebugControllerScript : MonoBehaviour
     [SerializeField] private Text ConsoleContent;
     [SerializeField] private Console Con;
 
+    [SerializeField] private UnityEvent OnDatabaseCracked;
+
     private List<string> AcceptedCommands;
     private HelpCommand help;
     private SeeCommand see;
     private WatkCommand watk;
     private ShowFiles showfiles;
+    private FishCommand fish;
 
     private void Start()
     {
@@ -33,6 +37,7 @@ public class DebugControllerScript : MonoBehaviour
         see = new SeeCommand();
         watk = new WatkCommand();
         showfiles = new ShowFiles();
+        fish = new FishCommand();
     }
 
     public void DetectInput()
@@ -54,6 +59,11 @@ public class DebugControllerScript : MonoBehaviour
         }
     }
 
+    public void AddToConsole(string text)
+    {
+        Con.Log("\n   > " + text);
+    }
+
     /// <summary>
     /// Returns the content and the results of the command that the method will detect.
     /// Based on the commands that we implemented, we will give certain results.
@@ -66,6 +76,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "see") return see.ExecuteCommand(command);
         if (keyword == "watk") return watk.ExecuteCommand(command);
         if (keyword == "showfiles") return showfiles.ExecuteCommand(command);
+        if (keyword == "fish") return fish.ExecuteCommand(command);
 
         return null;
     }
@@ -81,6 +92,7 @@ public class DebugControllerScript : MonoBehaviour
         if (keyword == "see") return see.CheckSyntax(text);
         if (keyword == "watk") return watk.CheckSyntax(text);
         if (keyword == "showfiles") return showfiles.CheckSyntax(text);
+        if (keyword == "fish") return fish.CheckSyntax(text);
 
         return false;
     }
@@ -92,7 +104,28 @@ public class DebugControllerScript : MonoBehaviour
         AcceptedCommands.Add("dehash");
         AcceptedCommands.Add("see");
         AcceptedCommands.Add("showfiles");
+        AcceptedCommands.Add("fish");
         AcceptedCommands.Sort(); // to show them in alphabetical order
+    }
+
+    public void StartWait(int nrSeconds)
+    {
+        StartCoroutine(WaitSeconds(nrSeconds));
+    }
+
+    private IEnumerator WaitSeconds(int nrSeconds)
+    {
+        AddToConsole("Phishing attack initiated. Countdown for " + nrSeconds + " seconds.");
+        yield return new WaitForSeconds(nrSeconds);
+
+        int successRate = Random.Range(0, 100);
+        int randomNumber = Random.Range(0, 100);
+        if (successRate - 25 <= randomNumber && randomNumber <= successRate + 25)
+        {
+            AddToConsole("Phishing attack successful. Database cracked.");
+            OnDatabaseCracked.Invoke();
+        }
+        else AddToConsole("Phishing attack unsuccessful. Please try again.");
     }
 
     public List<string> GetCommandsList()
