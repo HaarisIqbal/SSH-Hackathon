@@ -49,46 +49,47 @@ public class Mission6Script : MonoBehaviour
         {
             string line = LoginPanelInputF.text;
 
-            if (!allDataDone)
+            if (routerCracked)
             {
-                if (routerCracked)
+                if (!database.IsDatabaseProtected())
                 {
-                    if (!database.IsDatabaseProtected())
+                    if (username == "")
                     {
-                        if (username == "")
+                        if (CheckCorrectUsername(line))
                         {
-                            if (CheckCorrectUsername(line))
+                            username = line;
+                            LoginPanelConsole.text += "\nPASSWORD:";
+                        }
+                        else
+                        {
+                            username = "";
+                            LoginPanelConsole.text = "USERNAME:";
+                        }
+                    }
+                    else
+                    {
+                        if (CheckCorrectPassword(line))
+                        {
+                            LoginPanelConsole.text += "\nLOGIN SUCCESSFUL.";
+                            if (!startedAnimation)
                             {
-                                username = line;
-                                LoginPanelConsole.text += "\nPASSWORD:";
-                            }
-                            else
-                            {
-                                username = "";
-                                LoginPanelConsole.text = "USERNAME:";
+                                startedAnimation = true;
+                                StartCoroutine(AnimateOutro());
                             }
                         }
                         else
                         {
-                            if (CheckCorrectPassword(line))
-                            {
-                                LoginPanelConsole.text += "\nLOGIN SUCCESSFUL. TYPE 'DELETE' TO WIPE ALL DATA";
-                                allDataDone = true;
-                            }
-                            else
-                            {
-                                username = "";
-                                LoginPanelConsole.text = "USERNAME:";
-                            }
+                            username = "";
+                            LoginPanelConsole.text = "USERNAME:";
                         }
                     }
-                    else LoginPanelConsole.text = "DATABASE PROTECTED.";
                 }
-                else
-                {
-                    if (line == passwordScript.GetPassword()) routerCracked = true;
-                    else LoginPanelConsole.text = "ROUTER PASSWORD:";
-                }
+                else LoginPanelConsole.text = "DATABASE PROTECTED.";
+            }
+            else
+            {
+                if (line == passwordScript.GetPassword()) routerCracked = true;
+                else LoginPanelConsole.text = "ROUTER PASSWORD:";
             }
         }
 
