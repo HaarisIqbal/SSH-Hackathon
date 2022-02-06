@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class DebugControllerScript : MonoBehaviour
@@ -9,6 +10,8 @@ public class DebugControllerScript : MonoBehaviour
     [SerializeField] private ScrollRect Scroll;
     [SerializeField] private Text ConsoleContent;
     [SerializeField] private Console Con;
+
+    [SerializeField] private UnityEvent OnDatabaseCracked;
 
     private List<string> AcceptedCommands;
     private HelpCommand help;
@@ -117,7 +120,11 @@ public class DebugControllerScript : MonoBehaviour
 
         int successRate = Random.Range(0, 100);
         int randomNumber = Random.Range(0, 100);
-        if (successRate - 25 <= randomNumber && randomNumber <= successRate + 25) AddToConsole("Phishing attack successful. Database cracked.");
+        if (successRate - 25 <= randomNumber && randomNumber <= successRate + 25)
+        {
+            AddToConsole("Phishing attack successful. Database cracked.");
+            OnDatabaseCracked.Invoke();
+        }
         else AddToConsole("Phishing attack unsuccessful. Please try again.");
     }
 
