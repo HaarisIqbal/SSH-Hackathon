@@ -18,7 +18,6 @@ public class ButtonManagerScript : MonoBehaviour
     public void Mission3Button_Clicked()
     {
         SceneManager.LoadScene("Mission 3");
-
     }
 
     public void Mission4Button_Clicked()

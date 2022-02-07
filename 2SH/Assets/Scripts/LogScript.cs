@@ -17,8 +17,8 @@ public class LogScript : MonoBehaviour
         LogText.text += line;
     }
 
-    public void Log(string text)
+    public void Log(char c)
     {
-        LogText.text += text + "\n";
+        LogText.text += c;
     }
 }
