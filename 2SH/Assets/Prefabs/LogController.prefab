@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2538995522018342973
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2538995522018342975}
+  - component: {fileID: 2538995522018342972}
+  m_Layer: 0
+  m_Name: LogController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2538995522018342975
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538995522018342973}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2538995522018342972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538995522018342973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d20f6185ba82cc4db0ade023963177e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textToShow: "Hi there! Welcome to the world of Hacking! My name is Snowden Junior!
+    People call me the hacking Guru! For some, Hacking is brain sport! Others use
+    it for attacks, Myself \u2026 I recruit hackers as profession. Any good hacker
+    must know how to get past a simple login system. Don\u2019t try and guess the
+    password on your own. Let Comtron do that for you.  Think of it as a simple console
+    where you can type commands. Since this is a simple login system, just type in
+    'watk' and then a name of a filename. Make sure the file exists. If you're not
+    sure, type 'showfiles'. Once you have the data extracted, type 'see' and then
+    the name of the file you want to see the content of. Then, just use the bottom
+    right corner console to type in the right credentials."
+  Log: {fileID: 0}
+  timeToWaitBetweenLetters: 0.02
